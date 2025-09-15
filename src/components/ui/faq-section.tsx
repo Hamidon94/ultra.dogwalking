@@ -34,7 +34,7 @@ export const FaqSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-warm/20 to-background">
+    <section className="py-20 px-4 bg-gradient-to-b from-warm/40 to-background">
       <div className="container mx-auto max-w-4xl">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">

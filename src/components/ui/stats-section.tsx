@@ -23,7 +23,7 @@ export const StatsSection = () => {
   ];
 
   return (
-    <section className="py-16 px-4 bg-gradient-to-r from-sage/5 via-ocean/5 to-sage/5">
+    <section className="py-16 px-4 bg-gradient-to-r from-sage/10 via-ocean/10 to-sage/10">
       <div className="container mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map((stat, index) => (
