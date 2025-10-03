@@ -5,10 +5,11 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { User, Session } from '@supabase/supabase-js';
-import { Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { Eye, EyeOff, ArrowLeft, Dog, UserCheck } from 'lucide-react';
 
 const Auth = () => {
   const [user, setUser] = useState<User | null>(null);
@@ -23,6 +24,7 @@ const Auth = () => {
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
+  const [userType, setUserType] = useState<'owner' | 'walker'>('owner');
 
   const defaultTab = searchParams.get('mode') === 'walker' ? 'register' : 'login';
 
@@ -34,7 +36,13 @@ const Auth = () => {
         setUser(session?.user ?? null);
         
         if (session?.user) {
-          navigate('/dashboard');
+          // Rediriger selon le type d'utilisateur
+          const userMetadata = session.user.user_metadata;
+          if (userMetadata?.user_type === 'walker') {
+            navigate('/walker/dashboard');
+          } else {
+            navigate('/dashboard');
+          }
         }
       }
     );
@@ -45,7 +53,13 @@ const Auth = () => {
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        navigate('/dashboard');
+        // Rediriger selon le type d'utilisateur
+        const userMetadata = session.user.user_metadata;
+        if (userMetadata?.user_type === 'walker') {
+          navigate('/walker/dashboard');
+        } else {
+          navigate('/dashboard');
+        }
       }
     });
 
@@ -105,7 +119,9 @@ const Auth = () => {
     setLoading(true);
 
     try {
-      const redirectUrl = `${window.location.origin}/dashboard`;
+      const redirectUrl = userType === 'walker' 
+        ? `${window.location.origin}/walker/dashboard`
+        : `${window.location.origin}/dashboard`;
       
       const { error } = await supabase.auth.signUp({
         email,
@@ -114,7 +130,8 @@ const Auth = () => {
           emailRedirectTo: redirectUrl,
           data: {
             first_name: firstName,
-            last_name: lastName
+            last_name: lastName,
+            user_type: userType
           }
         }
       });
@@ -138,6 +155,13 @@ const Auth = () => {
           title: "Inscription réussie",
           description: "Vérifiez votre email pour confirmer votre compte",
         });
+        
+        // Si c'est un promeneur, rediriger vers le processus d'inscription détaillé
+        if (userType === 'walker') {
+          setTimeout(() => {
+            navigate('/walker/register');
+          }, 2000);
+        }
       }
     } catch (error: any) {
       toast({
@@ -239,11 +263,37 @@ const Auth = () => {
               <CardHeader>
                 <CardTitle>Créer un compte</CardTitle>
                 <CardDescription>
-                  Rejoignez notre communauté de propriétaires de chiens
+                  {userType === 'owner' 
+                    ? "Rejoignez notre communauté de propriétaires de chiens"
+                    : "Devenez promeneur professionnel sur notre plateforme"
+                  }
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleRegister} className="space-y-4">
+                  <div>
+                    <Label htmlFor="userType">Je suis</Label>
+                    <Select value={userType} onValueChange={(value: 'owner' | 'walker') => setUserType(value)}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Sélectionnez votre profil" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="owner">
+                          <div className="flex items-center space-x-2">
+                            <Dog className="h-4 w-4" />
+                            <span>Propriétaire de chien</span>
+                          </div>
+                        </SelectItem>
+                        <SelectItem value="walker">
+                          <div className="flex items-center space-x-2">
+                            <UserCheck className="h-4 w-4" />
+                            <span>Promeneur professionnel</span>
+                          </div>
+                        </SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+
                   <div className="grid grid-cols-2 gap-4">
                     <div>
                       <Label htmlFor="firstName">Prénom</Label>
@@ -311,22 +361,26 @@ const Auth = () => {
                   </div>
 
                   <Button type="submit" className="w-full" disabled={loading}>
-                    {loading ? "Création..." : "Créer mon compte"}
+                    {loading ? "Création..." : 
+                      userType === 'walker' ? "Créer mon compte promeneur" : "Créer mon compte"
+                    }
                   </Button>
                 </form>
 
-                <div className="mt-4 p-4 bg-muted/50 rounded-lg">
-                  <p className="text-sm text-center text-muted-foreground">
-                    Vous êtes un promeneur professionnel ?
-                  </p>
-                  <Button 
-                    variant="link" 
-                    className="w-full mt-1" 
-                    onClick={() => navigate('/walker/register')}
-                  >
-                    Inscrivez-vous comme promeneur
-                  </Button>
-                </div>
+                {userType === 'owner' && (
+                  <div className="mt-4 p-4 bg-muted/50 rounded-lg">
+                    <p className="text-sm text-center text-muted-foreground">
+                      Vous êtes un promeneur professionnel ?
+                    </p>
+                    <Button 
+                      variant="link" 
+                      className="w-full mt-1" 
+                      onClick={() => setUserType('walker')}
+                    >
+                      Inscrivez-vous comme promeneur
+                    </Button>
+                  </div>
+                )}
               </CardContent>
             </Card>
           </TabsContent>

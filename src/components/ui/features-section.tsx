@@ -1,4 +1,29 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+
+const AnimatedCard = ({ feature, index }) => {
+  const { ref, isVisible } = useScrollAnimation(0.1);
+
+  return (
+    <Card 
+      ref={ref}
+      className={`shadow-card hover:shadow-lg transition-all duration-300 bg-gradient-card border-0 hover-lift scroll-animate ${isVisible ? 'in-view' : ''}`}
+      style={{ animationDelay: `${index * 0.1}s` }}
+    >
+      <CardHeader className="text-center pb-4">
+        <div className={`text-4xl mb-4 ${isVisible ? 'animate-float' : ''}`} style={{ animationDelay: `${index * 0.2}s` }}>
+          {feature.icon}
+        </div>
+        <CardTitle className="text-xl">{feature.title}</CardTitle>
+      </CardHeader>
+      <CardContent>
+        <CardDescription className="text-center text-base">
+          {feature.description}
+        </CardDescription>
+      </CardContent>
+    </Card>
+  );
+};
 
 export const FeaturesSection = () => {
   const features = [
@@ -52,23 +77,7 @@ export const FeaturesSection = () => {
         
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {features.map((feature, index) => (
-            <Card 
-              key={index} 
-              className="shadow-card hover:shadow-lg transition-all duration-300 bg-gradient-card border-0 hover-lift scroll-animate"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader className="text-center pb-4">
-                <div className="text-4xl mb-4 animate-float" style={{ animationDelay: `${index * 0.2}s` }}>
-                  {feature.icon}
-                </div>
-                <CardTitle className="text-xl">{feature.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <CardDescription className="text-center text-base">
-                  {feature.description}
-                </CardDescription>
-              </CardContent>
-            </Card>
+            <AnimatedCard key={index} feature={feature} index={index} />
           ))}
         </div>
       </div>
