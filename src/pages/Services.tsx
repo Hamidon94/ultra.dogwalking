@@ -110,8 +110,8 @@ export default function Services() {
   ];
 
   const handleReservation = (serviceId: string) => {
-    // Rediriger vers la page de réservation avec le service pré-sélectionné
-    window.location.href = `/book?service=${serviceId}`;
+    // Rediriger vers la page de réservation générique avec le service pré-sélectionné
+    window.location.href = `/book-walk?service=${serviceId}`;
   };
 
   return (

@@ -40,6 +40,7 @@ import Search from "./pages/Search";
 import Priority from "./pages/Priority";
 import Services from "./pages/Services";
 import Help from "./pages/Help";
+import WalkTracking from "./pages/WalkTracking";
 
 const queryClient = new QueryClient();
 
@@ -85,6 +86,7 @@ const App = () => (
           <Route path="/priority" element={<Priority />} />
           <Route path="/services" element={<Services />} />
           <Route path="/help" element={<Help />} />
+          <Route path="/walk-tracking/:bookingId" element={<WalkTracking />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
