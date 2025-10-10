@@ -43,7 +43,30 @@ const AddDog = () => {
     is_friendly_with_children: false,
     is_trained: false,
     needs_special_care: false,
-    photo_url: ''
+    photo_url: '',
+    // Carnet de santé numérique
+    veterinarian_name: '',
+    veterinarian_phone: '',
+    microchip_number: '',
+    insurance_number: '',
+    allergies: '',
+    medications: '',
+    last_vaccination_date: '',
+    next_vaccination_date: '',
+    sterilized: false,
+    emergency_contact_name: '',
+    emergency_contact_phone: '',
+    // Préférences comportementales
+    energy_level: '',
+    favorite_activities: [],
+    fears_phobias: '',
+    feeding_instructions: '',
+    walking_preferences: '',
+    // Informations supplémentaires
+    registration_number: '',
+    birth_date: '',
+    gender: '',
+    color: ''
   });
 
   useEffect(() => {
@@ -298,6 +321,231 @@ const AddDog = () => {
                     }
                   />
                   <Label htmlFor="special_care">Nécessite des soins spéciaux</Label>
+                </div>
+              </div>
+
+              {/* Informations supplémentaires */}
+              <div className="space-y-4">
+                <Label className="text-base font-medium">Informations supplémentaires</Label>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="birth_date">Date de naissance</Label>
+                    <Input
+                      id="birth_date"
+                      type="date"
+                      value={dogData.birth_date}
+                      onChange={(e) => setDogData(prev => ({ ...prev, birth_date: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="gender">Sexe</Label>
+                    <Select onValueChange={(value) => setDogData(prev => ({ ...prev, gender: value }))}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Sélectionnez le sexe" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="male">Mâle</SelectItem>
+                        <SelectItem value="female">Femelle</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="color">Couleur</Label>
+                    <Input
+                      id="color"
+                      placeholder="ex: Noir et blanc, Marron..."
+                      value={dogData.color}
+                      onChange={(e) => setDogData(prev => ({ ...prev, color: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="registration_number">Numéro d'identification</Label>
+                    <Input
+                      id="registration_number"
+                      placeholder="Numéro LOF, LOOF..."
+                      value={dogData.registration_number}
+                      onChange={(e) => setDogData(prev => ({ ...prev, registration_number: e.target.value }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center space-x-2">
+                  <Checkbox
+                    id="sterilized"
+                    checked={dogData.sterilized}
+                    onCheckedChange={(checked) => 
+                      setDogData(prev => ({ ...prev, sterilized: checked as boolean }))
+                    }
+                  />
+                  <Label htmlFor="sterilized">Stérilisé(e)</Label>
+                </div>
+              </div>
+
+              {/* Carnet de santé numérique */}
+              <div className="space-y-4">
+                <Label className="text-base font-medium">Carnet de santé numérique</Label>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="veterinarian_name">Nom du vétérinaire</Label>
+                    <Input
+                      id="veterinarian_name"
+                      placeholder="Dr. Martin Dupont"
+                      value={dogData.veterinarian_name}
+                      onChange={(e) => setDogData(prev => ({ ...prev, veterinarian_name: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="veterinarian_phone">Téléphone vétérinaire</Label>
+                    <Input
+                      id="veterinarian_phone"
+                      placeholder="01 23 45 67 89"
+                      value={dogData.veterinarian_phone}
+                      onChange={(e) => setDogData(prev => ({ ...prev, veterinarian_phone: e.target.value }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="microchip_number">Numéro de puce</Label>
+                    <Input
+                      id="microchip_number"
+                      placeholder="250268000123456"
+                      value={dogData.microchip_number}
+                      onChange={(e) => setDogData(prev => ({ ...prev, microchip_number: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="insurance_number">Numéro d'assurance</Label>
+                    <Input
+                      id="insurance_number"
+                      placeholder="Numéro de police d'assurance"
+                      value={dogData.insurance_number}
+                      onChange={(e) => setDogData(prev => ({ ...prev, insurance_number: e.target.value }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="last_vaccination_date">Dernière vaccination</Label>
+                    <Input
+                      id="last_vaccination_date"
+                      type="date"
+                      value={dogData.last_vaccination_date}
+                      onChange={(e) => setDogData(prev => ({ ...prev, last_vaccination_date: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="next_vaccination_date">Prochaine vaccination</Label>
+                    <Input
+                      id="next_vaccination_date"
+                      type="date"
+                      value={dogData.next_vaccination_date}
+                      onChange={(e) => setDogData(prev => ({ ...prev, next_vaccination_date: e.target.value }))}
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="allergies">Allergies</Label>
+                  <Textarea
+                    id="allergies"
+                    placeholder="Allergies alimentaires, environnementales..."
+                    value={dogData.allergies}
+                    onChange={(e) => setDogData(prev => ({ ...prev, allergies: e.target.value }))}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="medications">Médicaments actuels</Label>
+                  <Textarea
+                    id="medications"
+                    placeholder="Traitements en cours, posologie..."
+                    value={dogData.medications}
+                    onChange={(e) => setDogData(prev => ({ ...prev, medications: e.target.value }))}
+                  />
+                </div>
+              </div>
+
+              {/* Contact d'urgence */}
+              <div className="space-y-4">
+                <Label className="text-base font-medium">Contact d'urgence</Label>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="emergency_contact_name">Nom du contact</Label>
+                    <Input
+                      id="emergency_contact_name"
+                      placeholder="Nom de la personne à contacter"
+                      value={dogData.emergency_contact_name}
+                      onChange={(e) => setDogData(prev => ({ ...prev, emergency_contact_name: e.target.value }))}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="emergency_contact_phone">Téléphone d'urgence</Label>
+                    <Input
+                      id="emergency_contact_phone"
+                      placeholder="06 12 34 56 78"
+                      value={dogData.emergency_contact_phone}
+                      onChange={(e) => setDogData(prev => ({ ...prev, emergency_contact_phone: e.target.value }))}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              {/* Préférences comportementales */}
+              <div className="space-y-4">
+                <Label className="text-base font-medium">Préférences et habitudes</Label>
+                
+                <div className="space-y-2">
+                  <Label htmlFor="energy_level">Niveau d'énergie</Label>
+                  <Select onValueChange={(value) => setDogData(prev => ({ ...prev, energy_level: value }))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionnez le niveau d'énergie" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="low">Faible - Calme et posé</SelectItem>
+                      <SelectItem value="medium">Moyen - Équilibré</SelectItem>
+                      <SelectItem value="high">Élevé - Très actif</SelectItem>
+                      <SelectItem value="very_high">Très élevé - Hyperactif</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="fears_phobias">Peurs et phobies</Label>
+                  <Textarea
+                    id="fears_phobias"
+                    placeholder="Peur des orages, des voitures, des autres chiens..."
+                    value={dogData.fears_phobias}
+                    onChange={(e) => setDogData(prev => ({ ...prev, fears_phobias: e.target.value }))}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="feeding_instructions">Instructions d'alimentation</Label>
+                  <Textarea
+                    id="feeding_instructions"
+                    placeholder="Horaires, quantités, type de nourriture..."
+                    value={dogData.feeding_instructions}
+                    onChange={(e) => setDogData(prev => ({ ...prev, feeding_instructions: e.target.value }))}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="walking_preferences">Préférences de promenade</Label>
+                  <Textarea
+                    id="walking_preferences"
+                    placeholder="Lieux préférés, durée, intensité..."
+                    value={dogData.walking_preferences}
+                    onChange={(e) => setDogData(prev => ({ ...prev, walking_preferences: e.target.value }))}
+                  />
                 </div>
               </div>
 

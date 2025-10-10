@@ -45,13 +45,20 @@ export const TrackingMap: React.FC<TrackingMapProps> = ({
   useEffect(() => {
     if (!isLive) return;
 
+    // Initialiser les données de promenade
+    setWalkStatus('started');
+    
     const interval = setInterval(() => {
-      // Simulation de position GPS
+      // Simulation de position GPS avec mouvement réaliste
+      const basePosition = { lat: 48.8566, lng: 2.3522 }; // Paris
+      const time = Date.now();
+      const offset = Math.sin(time / 10000) * 0.001; // Mouvement sinusoïdal
+      
       const newPosition: WalkPosition = {
-        lat: 48.8566 + (Math.random() - 0.5) * 0.01,
-        lng: 2.3522 + (Math.random() - 0.5) * 0.01,
+        lat: basePosition.lat + offset + (Math.random() - 0.5) * 0.002,
+        lng: basePosition.lng + offset * 0.8 + (Math.random() - 0.5) * 0.002,
         timestamp: new Date(),
-        activity: ['walking', 'playing', 'resting'][Math.floor(Math.random() * 3)]
+        activity: ['walking', 'playing', 'resting', 'sniffing', 'running'][Math.floor(Math.random() * 5)]
       };
 
       setCurrentPosition(newPosition);

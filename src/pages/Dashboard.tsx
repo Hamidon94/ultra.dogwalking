@@ -7,7 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "@/hooks/use-toast";
 import { supabase } from "@/integrations/supabase/client";
 import { User, Session } from '@supabase/supabase-js';
-import { PlusCircle, Dog, MapPin, Calendar, LogOut } from 'lucide-react';
+import { PlusCircle, Dog, MapPin, Calendar, LogOut, MessageCircle } from 'lucide-react';
 import { useDogs } from '@/hooks/useDogs';
 
 const Dashboard = () => {
@@ -141,6 +141,21 @@ const Dashboard = () => {
             <CardContent>
               <p className="text-sm text-muted-foreground">
                 Gérez vos informations personnelles
+              </p>
+            </CardContent>
+          </Card>
+
+          <Card className="cursor-pointer hover:shadow-md transition-shadow" onClick={() => navigate('/messages')}>
+            <CardHeader className="pb-2">
+              <CardTitle className="text-lg flex items-center">
+                <MessageCircle className="h-5 w-5 mr-2 text-primary" />
+                Messages
+                <Badge variant="destructive" className="ml-2">3</Badge>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              <p className="text-sm text-muted-foreground">
+                Communiquez avec vos promeneurs
               </p>
             </CardContent>
           </Card>
