@@ -1,6 +1,6 @@
 {
-  "name": "Paw Paths - Promeneurs de chiens certifiés",
-  "short_name": "Paw Paths",
+  "name": "DogWalking - Promeneurs de chiens certifiés",
+  "short_name": "DogWalking",
   "description": "Trouvez des promeneurs de chiens certifiés et assurés près de chez vous",
   "start_url": "/",
   "display": "standalone",
