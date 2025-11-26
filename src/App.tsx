@@ -3,6 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ScrollToTop } from "./components/ScrollToTop";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import Dashboard from "./pages/Dashboard";
@@ -44,6 +45,7 @@ import WalkTracking from "./pages/WalkTracking";
 import Messages from "./pages/Messages";
 import Notifications from "./pages/Notifications";
 import Referral from "./pages/Referral";
+import ServicePage from "./pages/ServicePage";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollToTop />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/auth" element={<Auth />} />
@@ -88,6 +91,7 @@ const App = () => (
           <Route path="/search" element={<Search />} />
           <Route path="/priority" element={<Priority />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/:serviceType" element={<ServicePage />} />
           <Route path="/help" element={<Help />} />
           <Route path="/walk-tracking/:bookingId" element={<WalkTracking />} />
           <Route path="/messages" element={<Messages />} />

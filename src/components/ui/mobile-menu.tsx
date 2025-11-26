@@ -1,92 +1,91 @@
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
 import { Menu, X } from "lucide-react";
 
 export const MobileMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const toggleMenu = () => setIsOpen(!isOpen);
-
-  const menuItems = [
-    { href: "/search", label: "Rechercher" },
-    { href: "/walker/register", label: "Devenir Promeneur" },
-    { href: "/priority", label: "Être prioritaire" },
-    { href: "/services", label: "Services" },
-    { href: "/blog", label: "Blog" },
-    { href: "/help", label: "Aide" }
-  ];
-
   return (
     <>
-      {/* Menu Button */}
-      <Button
-        variant="ghost"
-        size="icon"
-        className="md:hidden"
-        onClick={toggleMenu}
+      <button
+        className="md:hidden p-2"
+        onClick={() => setIsOpen(!isOpen)}
       >
-        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-      </Button>
+        {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+      </button>
 
-      {/* Mobile Menu Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 z-[60] md:hidden">
-          <div className="fixed inset-0 bg-black/60" onClick={toggleMenu} />
-          <div className="fixed top-0 right-0 h-full w-80 bg-background border-l shadow-2xl">
-            <div className="flex items-center justify-between p-4 border-b">
-              <div className="flex items-center gap-2">
-                <div className="text-xl">🐕</div>
-                <span className="font-bold bg-gradient-primary bg-clip-text text-transparent">
-                  DogWalking
-                </span>
-              </div>
-              <Button variant="ghost" size="icon" onClick={toggleMenu}>
-                <X className="h-6 w-6" />
-              </Button>
+        <div className="fixed inset-0 z-40 md:hidden">
+          <div 
+            className="absolute inset-0 bg-black/50"
+            onClick={() => setIsOpen(false)}
+          />
+          
+          <div className="absolute top-16 right-0 w-full max-w-xs bg-white shadow-2xl z-50 max-h-[calc(100vh-64px)] overflow-y-auto border-l border-gray-100">
+            <div className="p-4 space-y-1">
+              <a
+                href="/search"
+                className="block px-4 py-3 text-gray-900 font-medium hover:bg-gray-100 rounded"
+                onClick={() => setIsOpen(false)}
+              >
+                Rechercher
+              </a>
+              <a
+                href="/walker/register"
+                className="block px-4 py-3 text-gray-900 font-medium hover:bg-gray-100 rounded"
+                onClick={() => setIsOpen(false)}
+              >
+                Devenir Promeneur
+              </a>
+              <a
+                href="/priority"
+                className="block px-4 py-3 text-gray-900 font-medium hover:bg-gray-100 rounded"
+                onClick={() => setIsOpen(false)}
+              >
+                Être prioritaire
+              </a>
+              <a
+                href="/services"
+                className="block px-4 py-3 text-gray-900 font-medium hover:bg-gray-100 rounded"
+                onClick={() => setIsOpen(false)}
+              >
+                Services
+              </a>
+              <a
+                href="/blog"
+                className="block px-4 py-3 text-gray-900 font-medium hover:bg-gray-100 rounded"
+                onClick={() => setIsOpen(false)}
+              >
+                Blog
+              </a>
+              <a
+                href="/help"
+                className="block px-4 py-3 text-gray-900 font-medium hover:bg-gray-100 rounded"
+                onClick={() => setIsOpen(false)}
+              >
+                Aide
+              </a>
             </div>
-            
-            <nav className="p-6 space-y-6">
-              {menuItems.map((item) => (
-                <button
-                  key={item.href}
-                  className="block w-full text-left py-3 px-2 text-lg font-medium text-foreground hover:text-primary hover:bg-primary/10 rounded-lg transition-all duration-200"
-                  onClick={() => {
-                    window.location.href = item.href;
-                    toggleMenu();
-                  }}
-                >
-                  {item.label}
-                </button>
-              ))}
-              
-              <div className="pt-6 border-t space-y-4">
-                <Button 
-                  variant="ghost" 
-                  size="lg"
-                  className="w-full justify-center text-lg" 
-                  onClick={() => {
-                    window.location.href = '/auth';
-                    toggleMenu();
-                  }}
-                >
-                  Connexion
-                </Button>
-                <Button 
-                  variant="hero" 
-                  size="lg"
-                  className="w-full text-lg" 
-                  onClick={() => {
-                    window.location.href = '/auth';
-                    toggleMenu();
-                  }}
-                >
-                  S'inscrire
-                </Button>
-              </div>
-            </nav>
+
+            <div className="border-t border-gray-200 p-4 space-y-2">
+              <a
+                href="/auth"
+                className="block w-full px-4 py-2 text-center text-gray-900 font-medium border border-gray-300 rounded hover:bg-gray-50"
+                onClick={() => setIsOpen(false)}
+              >
+                Connexion
+              </a>
+              <a
+                href="/auth"
+                className="block w-full px-4 py-2 text-center text-white font-medium bg-green-600 rounded hover:bg-green-700"
+                onClick={() => setIsOpen(false)}
+              >
+                S'inscrire
+              </a>
+            </div>
           </div>
         </div>
       )}
     </>
   );
 };
+

@@ -34,7 +34,7 @@ const Pricing = () => {
         "Photos et vidéos",
         "Rapport détaillé",
         "Jeux et socialisation",
-        "Support prioritaire"
+        "Support propriétaire"
       ],
       popular: true
     },
@@ -591,7 +591,7 @@ export default Pricing;
                       <Check className="w-5 h-5 text-sage mt-1" />
                       <div>
                         <p className="font-semibold">Support dédié</p>
-                        <p className="text-sm text-muted-foreground">Assistance prioritaire 24h/24</p>
+                        <p className="text-sm text-muted-foreground">Assistance propriétaire 24h/24</p>
                       </div>
                     </div>
                   </CardContent>

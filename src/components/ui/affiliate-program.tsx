@@ -307,7 +307,7 @@ export const AffiliateProgram: React.FC<AffiliateProgramProps> = ({
                   <ul className="mt-2 space-y-1">
                     <li>• Bonus de 20% sur toutes les commissions</li>
                     <li>• Accès aux statistiques avancées</li>
-                    <li>• Support prioritaire</li>
+                    <li>• Support propriétaire</li>
                   </ul>
                 </div>
               </div>

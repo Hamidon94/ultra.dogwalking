@@ -151,7 +151,7 @@ const frTranslations: TranslationKeys = {
   'nav.pricing': 'Tarifs',
   'nav.walkers': 'Nos promeneurs',
   'nav.search': 'Rechercher',
-  'nav.priority': 'Être prioritaire',
+  'nav.priority': 'Être propriétaire',
   'nav.services': 'Services',
   'nav.blog': 'Blog',
   'nav.help': 'Aide',

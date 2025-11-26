@@ -7,7 +7,7 @@ export default function Priority() {
   const priorityFeatures = [
     {
       icon: <Zap className="h-6 w-6" />,
-      title: "Réservation prioritaire",
+      title: "Réservation propriétaire",
       description: "Accès en priorité aux créneaux de réservation, même en période de forte demande"
     },
     {
@@ -51,12 +51,12 @@ export default function Priority() {
       description: "Pour les propriétaires réguliers",
       features: [
         "Toutes les fonctionnalités Standard",
-        "Réservation prioritaire",
+        "Réservation propriétaire",
         "Réponse garantie sous 2h",
         "Promeneurs premium",
         "Assurance renforcée",
         "Réservation 30 jours à l'avance",
-        "Support prioritaire 7j/7"
+        "Support propriétaire 7j/7"
       ],
       popular: true
     },
@@ -87,7 +87,7 @@ export default function Priority() {
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Profitez d'avantages exclusifs et d'un service premium pour votre compagnon. 
-            Nos abonnements prioritaires vous garantissent le meilleur service possible.
+            Nos abonnements propriétaires vous garantissent le meilleur service possible.
           </p>
         </div>
 

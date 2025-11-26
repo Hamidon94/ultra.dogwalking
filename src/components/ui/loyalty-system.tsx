@@ -88,7 +88,7 @@ export const LoyaltySystem: React.FC<LoyaltySystemProps> = ({
       icon: <Award className="w-5 h-5" />,
       color: 'text-orange-600 bg-orange-100',
       minPoints: 0,
-      benefits: ['Points sur chaque réservation', 'Support prioritaire'],
+      benefits: ['Points sur chaque réservation', 'Support propriétaire'],
       discount: 0
     },
     {

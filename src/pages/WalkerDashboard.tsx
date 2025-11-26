@@ -188,15 +188,15 @@ const WalkerDashboard = () => {
       </header>
 
       <main className="container mx-auto px-4 py-8">
-        {/* Welcome & Stats */}
-        <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Tableau de bord promeneur</h2>
-          <p className="text-muted-foreground mb-6">
-            Gérez vos réservations et suivez votre activité
-          </p>
-
-          {/* Stats Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+	        {/* Welcome & Stats */}
+	        <div className="mb-8">
+	          <h2 className="text-3xl font-bold mb-2">Tableau de bord Promeneur</h2>
+	          <p className="text-muted-foreground mb-6">
+	            Gérez vos réservations et suivez votre activité
+	          </p>
+	
+	          {/* Stats Cards */}
+	          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
             <Card>
               <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
                 <CardTitle className="text-sm font-medium">Balades totales</CardTitle>
@@ -248,10 +248,53 @@ const WalkerDashboard = () => {
                 </p>
               </CardContent>
             </Card>
-          </div>
-        </div>
-
-        {/* Bookings Tabs */}
+	          </div>
+	        </div>
+	
+	        {/* Performance Section (Enrichment) */}
+	        <div className="mb-8">
+	          <h3 className="text-2xl font-semibold mb-4">Votre Performance</h3>
+	          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+	            <Card>
+	              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+	                <CardTitle className="text-sm font-medium">Taux d'Acceptation</CardTitle>
+	                <CheckCircle className="h-4 w-4 text-muted-foreground" />
+	              </CardHeader>
+	              <CardContent>
+	                <div className="text-2xl font-bold">95%</div>
+	                <p className="text-xs text-muted-foreground">
+	                  Basé sur les 30 derniers jours
+	                </p>
+	              </CardContent>
+	            </Card>
+	            <Card>
+	              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+	                <CardTitle className="text-sm font-medium">Clients Fidèles</CardTitle>
+	                <Users className="h-4 w-4 text-muted-foreground" />
+	              </CardHeader>
+	              <CardContent>
+	                <div className="text-2xl font-bold">12</div>
+	                <p className="text-xs text-muted-foreground">
+	                  Ont réservé plus d'une fois
+	                </p>
+	              </CardContent>
+	            </Card>
+	            <Card>
+	              <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+	                <CardTitle className="text-sm font-medium">Prochain Paiement</CardTitle>
+	                <Euro className="h-4 w-4 text-muted-foreground" />
+	              </CardHeader>
+	              <CardContent>
+	                <div className="text-2xl font-bold">250.00€</div>
+	                <p className="text-xs text-muted-foreground">
+	                  Prévu pour le 1er du mois prochain
+	                </p>
+	              </CardContent>
+	            </Card>
+	          </div>
+	        </div>
+	
+	        {/* Bookings Tabs */}
         <Tabs defaultValue="pending" className="w-full">
           <TabsList className="grid w-full grid-cols-3">
             <TabsTrigger value="pending">

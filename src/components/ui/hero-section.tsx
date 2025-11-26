@@ -7,7 +7,7 @@ export const HeroSection = () => {
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: `url('https://images.unsplash.com/photo-1601758228041-f3b2795255f1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')` 
+          backgroundImage: `url('/hero-background.jpeg')` 
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/30" />
@@ -24,67 +24,19 @@ export const HeroSection = () => {
             {" "}pour Votre Compagnon
           </h1>
           
-          <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-            Trouvez des promeneurs de confiance près de chez vous et offrez à votre compagnon 
-            l'exercice et l'attention qu'il mérite.
-          </p>
-          
-          {/* Formulaire de recherche rapide */}
-          <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 mb-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <select className="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70">
-                <option value="">Type d'animal</option>
-                <option value="chien">Chien</option>
-                <option value="chat">Chat</option>
-              </select>
-              <select className="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70">
-                <option value="">Service</option>
-                <option value="promenade">Promenade</option>
-                <option value="visite">Visite simple</option>
-                <option value="garde">Garde à domicile</option>
-                <option value="pension">Pension canine</option>
-                <option value="veterinaire">Accompagnement vétérinaire</option>
-              </select>
-              <input 
-                type="text" 
-                placeholder="Votre adresse" 
-                className="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70"
-              />
-              <select className="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70">
-                <option value="">Taille du chien</option>
-                <option value="petit">Petit (moins de 10kg)</option>
-                <option value="moyen">Moyen (10-25kg)</option>
-                <option value="grand">Grand (plus de 25kg)</option>
-              </select>
-              <input 
-                type="date" 
-                placeholder="Date souhaitée" 
-                className="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70"
-              />
-              <input 
-                type="time" 
-                placeholder="Heure souhaitée" 
-                className="bg-white/20 border border-white/30 rounded-lg px-4 py-3 text-white placeholder-white/70"
-              />
-            </div>
-            <Button 
-              variant="hero" 
-              size="lg" 
-              className="w-full mt-4 text-lg px-8 py-4 h-auto"
-              onClick={() => window.location.href = '/search'}
-            >
-              Rechercher des promeneurs
-            </Button>
-          </div>
-
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto" onClick={() => window.location.href = '/auth'}>
-              Réserver une promenade
-            </Button>
-            <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto bg-white/10 border-white/30 text-white hover:bg-white/20" onClick={() => window.location.href = '/walker/register'}>
-              Devenir promeneur
-            </Button>
-          </div>
+	          <p className="text-xl md:text-2xl mb-8 opacity-90 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+	            Trouvez des promeneurs de confiance près de chez vous et offrez à votre compagnon 
+	            l'exercice et l'attention qu'il mérite.
+	          </p>
+	          
+	          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
+	            <Button variant="hero" size="lg" className="text-lg px-8 py-4 h-auto" onClick={() => window.location.href = '/auth'}>
+	              Réserver une promenade
+	            </Button>
+	            <Button variant="outline" size="lg" className="text-lg px-8 py-4 h-auto bg-white/10 border-white/30 text-white hover:bg-white/20" onClick={() => window.location.href = '/walker/register'}>
+	              Devenir promeneur
+	            </Button>
+	          </div>
           
           <div className="mt-12 flex justify-center items-center gap-8 text-sm opacity-80">
             <div className="flex items-center gap-2">

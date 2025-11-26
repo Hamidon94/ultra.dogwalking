@@ -20,7 +20,7 @@ export const Header = () => {
             Devenir Promeneur
           </a>
           <a href="/priority" className="text-sm hover:text-primary transition-colors">
-            Être prioritaire
+            Être propriétaire
           </a>
           <a href="/services" className="text-sm hover:text-primary transition-colors">
             Services
@@ -42,7 +42,9 @@ export const Header = () => {
           </Button>
         </div>
         
-        <MobileMenu />
+        <div className="md:hidden">
+          <MobileMenu />
+        </div>
       </div>
     </header>
   );

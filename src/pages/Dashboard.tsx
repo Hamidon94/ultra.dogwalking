@@ -81,11 +81,53 @@ const Dashboard = () => {
       <main className="container mx-auto px-4 py-8">
         {/* Welcome Section */}
         <div className="mb-8">
-          <h2 className="text-3xl font-bold mb-2">Tableau de bord</h2>
+          <h2 className="text-3xl font-bold mb-2">Tableau de bord Propriétaire</h2>
           <p className="text-muted-foreground">
             Gérez vos chiens, trouvez des promeneurs et réservez des balades
           </p>
         </div>
+
+        {/* Stats Section (Enrichment) */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Balades Réservées</CardTitle>
+              <Calendar className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">5</div>
+              <p className="text-xs text-muted-foreground">
+                3 à venir
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Promeneurs Favoris</CardTitle>
+              <MapPin className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">2</div>
+              <p className="text-xs text-muted-foreground">
+                Note moyenne : 4.9/5
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+              <CardTitle className="text-sm font-medium">Chiens Enregistrés</CardTitle>
+              <Dog className="h-4 w-4 text-muted-foreground" />
+            </CardHeader>
+            <CardContent>
+              <div className="text-2xl font-bold">{dogs.length}</div>
+              <p className="text-xs text-muted-foreground">
+                Dernière mise à jour : Aujourd'hui
+              </p>
+            </CardContent>
+          </Card>
+        </div>
+        
+        {/* Quick Actions */}
 
         {/* Quick Actions */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
@@ -220,8 +262,11 @@ const Dashboard = () => {
               <Calendar className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
               <h4 className="text-lg font-medium mb-2">Aucune activité récente</h4>
               <p className="text-muted-foreground">
-                Vos prochaines balades apparaîtront ici
+                Vos prochaines balades apparaîtront ici. Réservez-en une dès maintenant !
               </p>
+              <Button className="mt-4" onClick={() => navigate('/walkers')}>
+                Trouver un promeneur
+              </Button>
             </CardContent>
           </Card>
         </div>

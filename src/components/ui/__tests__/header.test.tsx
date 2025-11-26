@@ -24,7 +24,7 @@ describe('Header Component', () => {
   test('renders navigation links', () => {
     expect(screen.getByText('Rechercher')).toBeInTheDocument();
     expect(screen.getByText('Devenir Promeneur')).toBeInTheDocument();
-    expect(screen.getByText('Être prioritaire')).toBeInTheDocument();
+    expect(screen.getByText('Être propriétaire')).toBeInTheDocument();
     expect(screen.getByText('Services')).toBeInTheDocument();
     expect(screen.getByText('Blog')).toBeInTheDocument();
     expect(screen.getByText('Aide')).toBeInTheDocument();

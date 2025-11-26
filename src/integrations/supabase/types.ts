@@ -14,71 +14,7 @@ export type Database = {
   }
   public: {
     Tables: {
-      admin_logs: {
-        Row: {
-          action: string
-          admin_id: string | null
-          created_at: string
-          details: Json | null
-          id: string
-          ip_address: unknown | null
-        }
-        Insert: {
-          action: string
-          admin_id?: string | null
-          created_at?: string
-          details?: Json | null
-          id?: string
-          ip_address?: unknown | null
-        }
-        Update: {
-          action?: string
-          admin_id?: string | null
-          created_at?: string
-          details?: Json | null
-          id?: string
-          ip_address?: unknown | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "admin_logs_admin_id_fkey"
-            columns: ["admin_id"]
-            isOneToOne: false
-            referencedRelation: "admin_users"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      admin_users: {
-        Row: {
-          created_at: string
-          full_name: string | null
-          id: string
-          last_login: string | null
-          password_hash: string
-          updated_at: string
-          username: string
-        }
-        Insert: {
-          created_at?: string
-          full_name?: string | null
-          id?: string
-          last_login?: string | null
-          password_hash: string
-          updated_at?: string
-          username: string
-        }
-        Update: {
-          created_at?: string
-          full_name?: string | null
-          id?: string
-          last_login?: string | null
-          password_hash?: string
-          updated_at?: string
-          username?: string
-        }
-        Relationships: []
-      }
+
       bookings: {
         Row: {
           booking_date: string
@@ -598,7 +534,7 @@ export type Database = {
             foreignKeyName: "system_settings_updated_by_fkey"
             columns: ["updated_by"]
             isOneToOne: false
-            referencedRelation: "admin_users"
+
             referencedColumns: ["id"]
           },
         ]
